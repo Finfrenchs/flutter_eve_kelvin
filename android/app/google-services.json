@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466530104593",
+    "project_id": "wecare-6e9fa",
+    "storage_bucket": "wecare-6e9fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466530104593:android:e4db50fb0b9328b7ddc8b0",
+        "android_client_info": {
+          "package_name": "com.kelvinproject.wecare_apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466530104593-lnjb05o01a83pm7a6crjcnb9o0uo9j3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp7Ygyx0HvrYsbf_mhhI3Zsuz6bKaeqZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466530104593-lnjb05o01a83pm7a6crjcnb9o0uo9j3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
