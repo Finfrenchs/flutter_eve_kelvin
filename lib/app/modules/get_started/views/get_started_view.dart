@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:wecare_apps/app/constant/color.dart';
+import 'package:wecare_apps/app/routes/app_pages.dart';
 
 import '../controllers/get_started_controller.dart';
 import 'package:lottie/lottie.dart';
@@ -46,7 +47,9 @@ class GetStartedView extends GetView<GetStartedController> {
 
               ///btnFacebook
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Get.snackbar("Login Facebook Account", "Coming soon");
+                },
                 icon: CircleAvatar(
                   radius: 16,
                   child: Image.asset("assets/images/facebook.png"),
@@ -76,7 +79,9 @@ class GetStartedView extends GetView<GetStartedController> {
 
               ///btnGoogle
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Get.snackbar("Login Google", "Coming soon");
+                },
                 icon: CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.white,
@@ -108,7 +113,9 @@ class GetStartedView extends GetView<GetStartedController> {
 
               ///btnApple
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Get.snackbar("Login Apple id", "Coming soon");
+                },
                 icon: CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.white,
@@ -150,7 +157,9 @@ class GetStartedView extends GetView<GetStartedController> {
               ),
               ///btnSignInWithEmail
               ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Get.toNamed(Routes.LOGIN);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colorGreenDark,
                     maximumSize: Size(mediaQueryWidthMax, 65),
@@ -169,7 +178,7 @@ class GetStartedView extends GetView<GetStartedController> {
               ///btnRegister
               GestureDetector(
                 onTap: () {
-
+                  Get.toNamed(Routes.REGISTER);
                 },
                 child: RichText(
                   text: TextSpan(children: [

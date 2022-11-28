@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:wecare_apps/app/routes/app_pages.dart';
 
 import '../../../constant/color.dart';
 import '../controllers/login_controller.dart';
@@ -68,7 +69,9 @@ class LoginView extends GetView<LoginController> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      controller: controller.emailC,
                       autofocus: false,
+                      autocorrect: false,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: Colors.black87),
                       decoration: InputDecoration(
@@ -112,6 +115,8 @@ class LoginView extends GetView<LoginController> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      controller: controller.passwordC,
+                      autocorrect: false,
                       autofocus: false,
                       obscureText: !_passwordVisible,
                       keyboardType: TextInputType.visiblePassword,
@@ -183,7 +188,9 @@ class LoginView extends GetView<LoginController> {
 
                 ///btnLogin
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.login();
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colorGreenDark,
                     maximumSize: Size(mediaQueryWidthMax * 3, 70),
@@ -286,7 +293,9 @@ class LoginView extends GetView<LoginController> {
 
                 ///btn Sign in
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.REGISTER);
+                  },
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(children: [

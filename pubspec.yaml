@@ -13,6 +13,7 @@ dependencies:
   cloud_firestore: 4.1.0
   firebase_storage: 11.0.6
   lottie: 2.0.0
+  shared_preferences: 2.0.15
   flutter: 
     sdk: flutter
 

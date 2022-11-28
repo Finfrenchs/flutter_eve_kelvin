@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:wecare_apps/app/constant/color.dart';
+import 'package:wecare_apps/app/routes/app_pages.dart';
 
 import '../controllers/register_controller.dart';
 
@@ -61,7 +62,9 @@ class RegisterView extends GetView<RegisterController> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      controller: controller.nameC,
                       autofocus: false,
+                      autocorrect: false,
                       keyboardType: TextInputType.name,
                       style: const TextStyle(color: Colors.black87),
                       decoration: InputDecoration(
@@ -105,7 +108,9 @@ class RegisterView extends GetView<RegisterController> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      controller: controller.emailC,
                       autofocus: false,
+                      autocorrect: false,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: Colors.black87),
                       decoration: InputDecoration(
@@ -149,7 +154,9 @@ class RegisterView extends GetView<RegisterController> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      controller: controller.passwordC,
                       autofocus: false,
+                      autocorrect: false,
                       obscureText: !_passwordVisible,
                       keyboardType: TextInputType.visiblePassword,
                       style: const TextStyle(color: Colors.black87),
@@ -189,7 +196,9 @@ class RegisterView extends GetView<RegisterController> {
 
               ///btnRegister
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.register();
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: colorGreenDark,
                   maximumSize: Size(mediaQueryWidthMax * 3, 70),
@@ -291,7 +300,9 @@ class RegisterView extends GetView<RegisterController> {
 
               ///btn Sign in
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(Routes.LOGIN);
+                },
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(children: [
