@@ -9,18 +9,32 @@ import 'package:wecare_apps/app/routes/app_pages.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
+
+  //final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+  //TODO Add your own Collection Name instead of 'users'
+  CollectionReference usersCollection =
+  FirebaseFirestore.instance.collection('users');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-        //stream: controller.stre,
-        builder: (context, snap) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              alignment: Alignment.center,
-              child: ListView(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          alignment: Alignment.center,
+          child: StreamBuilder<DocumentSnapshot>(
+            stream: usersCollection.doc(user!.uid).snapshots(),
+            builder: (ctx, streamSnapshot) {
+              if (streamSnapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: colorGreenDark,
+                  ),
+                );
+              }
+              return ListView(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 children: <Widget>[
                   Container(
@@ -65,7 +79,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ),
                   Text(
-                    "Lisa BlackPink",
+                    "${streamSnapshot.data!['name']}",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 25,
@@ -253,7 +267,9 @@ class ProfileView extends GetView<ProfileController> {
                             ],
                           ),
                         ),
-                        SizedBox(width: 30,),
+                        SizedBox(
+                          width: 30,
+                        ),
                         OutlinedButton(
                           onPressed: () {},
                           child: Text(
@@ -266,29 +282,34 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: colorGreenDark, width: 2),
-                            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50))),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   ElevatedButton(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
                       Get.offAllNamed(Routes.GET_STARTED);
-                      },
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorGreenDark,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
                     ),
                     child: Text("LOGOUT"),
                   ),
                 ],
-              ),
-            ),
-          );
-        }
+              );
+            }
+          ),
+        ),
       ),
     );
   }
